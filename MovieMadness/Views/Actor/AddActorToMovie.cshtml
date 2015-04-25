@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model MovieMadness.Models.AddActorViewModel
+<h2>Add Actor To Movie</h2>
+
+<form method="post">
+    @Html.LabelFor(x => x.SelectedActorId)
+    @Html.DropDownListFor(x => x.SelectedActorId, new SelectList(Model.Actors, "ActorId", "Name", Model.Actors.First().ActorId))
+    @Html.LabelFor(x => x.SelectedMovieId)
+    @Html.DropDownListFor(x => x.SelectedMovieId, new SelectList(Model.Movies, "MovieId", "Title", Model.Movies.First().MovieId))
+    <button class="btn btn-default">Submit</button>
+</form>
+
+
+

@@ -1,0 +1,13 @@
+﻿@model MovieMadness.Model.Email
+<form method="post">
+
+    <br/>
+    <h2>  Email Us  </h2>
+    <div class="well">
+        <b>Your Email:</b>  @Html.TextBoxFor(x => x.From, new { @class = "form-control" }) <br />
+        <b>Subject:</b>  @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" }) <br />
+        <b>Body:</b>  @Html.TextAreaFor(x => x.Body, 12, 20, new { @class = "form-control" }) <br />
+        <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+</form>
+

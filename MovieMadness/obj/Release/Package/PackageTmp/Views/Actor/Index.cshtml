@@ -1,0 +1,55 @@
+﻿@*
+    @model List<MovieMadness.Models.ActorIndexViewModel>
+    <h2>Actors</h2>
+    @foreach (var m in Model)
+    {
+        <div class="well">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        @Html.LabelFor(x => m.Name): @m.Name
+                    </tr>
+                    <tr>
+                        @foreach (var r in m.ActorMovies)
+                        {
+                            <td>
+                                @r.Title <br />
+                                @r.Year
+                            </td>
+                        }
+                    </tr>
+             </tbody>
+            </table>
+        </div>
+    }
+*@
+
+@model List<MovieMadness.Models.MovieIndexViewModel>
+<h2>Actors</h2>
+<link href="~/Content/superhero.bootstrap.css" rel="stylesheet" />
+<!--for each movie-->
+@foreach (var m in Model)
+{
+    <div class="well">
+        <h2>Title: <u>@m.Title</u></h2>
+        <br />
+        @Html.ActionLink(" Add Actor ", "AddActorToMovie", null, new { @class = "btn btn-default" })
+        <br />
+        <table class="table table-bordered">
+            <tbody>
+                <!--for each actor-->
+                @foreach (var a in m.ActorsMovies)
+                {
+                    <tr>
+                        <td>
+                            <h3><strong>@a.Name</strong></h3>
+                            @Html.ActionLink(" Edit ", "EditActor", new { id = a.ActorId }, new { @class = "btn btn-primary"})
+
+                            @Html.ActionLink(" Delete ", "DeleteActor", new { id = a.ActorId }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
